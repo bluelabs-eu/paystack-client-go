@@ -1,4 +1,4 @@
-module bluelabs-eu/paystack-client-go-test
+module github.com/bluelabs-eu/paystack-client-go-test
 
 go 1.23.2
 
