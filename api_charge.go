@@ -352,6 +352,15 @@ func (a *ChargeAPIService) ChargeCreateExecute(r ApiChargeCreateRequest) (*Respo
 		return localVarReturnValue, nil, err
 	}
 
+	// Debug: Print the request body in a readable format
+	if req.Body != nil {
+		bodyBytes, err := io.ReadAll(req.Body)
+		if err != nil {
+			return localVarReturnValue, nil, fmt.Errorf("failed to read request body: %w", err)
+		}
+		req.Body = io.NopCloser(bytes.NewBuffer(bodyBytes)) // Reset the body after reading
+		fmt.Printf("!!!!Request Body: %s\n", string(bodyBytes))
+	}
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
 		return localVarReturnValue, localVarHTTPResponse, err
