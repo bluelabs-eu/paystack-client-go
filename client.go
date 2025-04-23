@@ -486,6 +486,18 @@ func (c *APIClient) prepareRequest(
 	for header, value := range c.cfg.DefaultHeader {
 		localVarRequest.Header.Add(header, value)
 	}
+
+	// Debug: Print the request body in a readable format
+	if localVarRequest.Body != nil {
+		bodyBytes, err := io.ReadAll(localVarRequest.Body)
+		if err != nil {
+			return localVarRequest, fmt.Errorf("failed to read request body: %w", err)
+		}
+		localVarRequest.Body = io.NopCloser(bytes.NewBuffer(bodyBytes)) // Reset the body after reading
+		fmt.Printf("!!!!Request Body: %s\n", string(bodyBytes))
+	} else {
+		fmt.Println("!!!!Request Body: nil")
+	}
 	return localVarRequest, nil
 }
 
