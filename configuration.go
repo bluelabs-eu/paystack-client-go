@@ -155,6 +155,7 @@ func getServerIndex(ctx context.Context) (int, error) {
 
 func getServerOperationIndex(ctx context.Context, endpoint string) (int, error) {
 	osi := ctx.Value(ContextOperationServerIndices)
+	fmt.Printf("osi: %v\n", osi)
 	if osi != nil {
 		if operationIndices, ok := osi.(map[string]int); !ok {
 			return 0, reportError("Invalid type %T should be map[string]int", osi)
@@ -197,11 +198,15 @@ func getServerOperationVariables(ctx context.Context, endpoint string) (map[stri
 // ServerURLWithContext returns a new server URL given an endpoint
 func (c *Configuration) ServerURLWithContext(ctx context.Context, endpoint string) (string, error) {
 	sc, ok := c.OperationServers[endpoint]
+	fmt.Printf("sc: %v\n", sc)
+	fmt.Printf("ok: %v\n", ok)
 	if !ok {
+		fmt.Printf("c.Servers: %v\n", c.Servers)
 		sc = c.Servers
 	}
 
 	if ctx == nil {
+		fmt.Println("ctx is nil")
 		return sc.URL(0, nil)
 	}
 
