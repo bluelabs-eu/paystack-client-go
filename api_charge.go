@@ -94,16 +94,21 @@ func (a *ChargeAPIService) ChargeCheckExecute(r ApiChargeCheckRequest) (*Respons
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
+	fmt.Printf("!!!!req: %v\n", req)
+	fmt.Printf("!!!!!!err: %v\n", err)
+
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
+	fmt.Printf("localVarHTTPResponse: %v\n", localVarHTTPResponse)
+	fmt.Printf("err2: %v\n", err)
 	if err != nil || localVarHTTPResponse == nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
 	// Debug: Print the response body
     fmt.Printf("Response Body: %s\n", string(localVarBody))
+	localVarHTTPResponse.Body.Close()
 
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
