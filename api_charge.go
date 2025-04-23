@@ -263,10 +263,10 @@ func (a *ChargeAPIService) ChargeCreateExecute(r ApiChargeCreateRequest) (*Respo
 		formFiles            []formFile
 		localVarReturnValue  *Response
 	)
+	fmt.Printf("r: %v\n", r)
+	fmt.Printf("r.email: %v\n", r.email)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ChargeAPIService.ChargeCreate")
-	fmt.Printf("!!!!localBasePath: %v\n", localBasePath)
-	fmt.Printf("err: %v\n", err)
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
