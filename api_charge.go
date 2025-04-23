@@ -62,8 +62,6 @@ func (a *ChargeAPIService) ChargeCheckExecute(r ApiChargeCheckRequest) (*Respons
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ChargeAPIService.ChargeCheck")
-	fmt.Printf("!!!!localBasePath: %v\n", localBasePath)
-	fmt.Printf("err: %v\n", err)
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -96,20 +94,14 @@ func (a *ChargeAPIService) ChargeCheckExecute(r ApiChargeCheckRequest) (*Respons
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
-	fmt.Printf("!!!!req: %v\n", req)
-	fmt.Printf("!!!!!!err: %v\n", err)
 
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
-	fmt.Printf("localVarHTTPResponse: %v\n", localVarHTTPResponse)
-	fmt.Printf("err2: %v\n", err)
 	if err != nil || localVarHTTPResponse == nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	// Debug: Print the response body
-    fmt.Printf("Response Body: %s\n", string(localVarBody))
 	localVarHTTPResponse.Body.Close()
 
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
@@ -119,7 +111,6 @@ func (a *ChargeAPIService) ChargeCheckExecute(r ApiChargeCheckRequest) (*Respons
 
 	if localVarHTTPResponse.StatusCode >= 300 {
 
-		fmt.Printf("Error Response: %s\n", string(localVarBody))
 		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
@@ -150,7 +141,6 @@ func (a *ChargeAPIService) ChargeCheckExecute(r ApiChargeCheckRequest) (*Respons
 	}
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	fmt.Printf("Decode Error: %s\n", err.Error())
 	if err != nil {
 		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
@@ -275,6 +265,8 @@ func (a *ChargeAPIService) ChargeCreateExecute(r ApiChargeCreateRequest) (*Respo
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ChargeAPIService.ChargeCreate")
+	fmt.Printf("!!!!localBasePath: %v\n", localBasePath)
+	fmt.Printf("err: %v\n", err)
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -360,13 +352,19 @@ func (a *ChargeAPIService) ChargeCreateExecute(r ApiChargeCreateRequest) (*Respo
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
+	fmt.Printf("!!!!req: %v\n", req)
+	fmt.Printf("!!!!!!err: %v\n", err)
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
+	fmt.Printf("localVarHTTPResponse: %v\n", localVarHTTPResponse)
+	fmt.Printf("3err: %v\n", err)
 	if err != nil || localVarHTTPResponse == nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+		// Debug: Print the response body
+		fmt.Printf("Response Body: %s\n", string(localVarBody))
 	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
@@ -374,11 +372,13 @@ func (a *ChargeAPIService) ChargeCreateExecute(r ApiChargeCreateRequest) (*Respo
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
+		fmt.Printf("Error Response: %s\n", string(localVarBody))
 		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
+			fmt.Println("401 Error")
 			var v Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
@@ -393,6 +393,7 @@ func (a *ChargeAPIService) ChargeCreateExecute(r ApiChargeCreateRequest) (*Respo
 	}
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	fmt.Printf("Decode Error: %s\n", err.Error())
 	if err != nil {
 		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
