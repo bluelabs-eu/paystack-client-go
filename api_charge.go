@@ -348,6 +348,8 @@ func (a *ChargeAPIService) ChargeCreateExecute(r ApiChargeCreateRequest) (*Respo
 		localVarFormParams.Add("eft", paramJson)
 	}
 	fmt.Printf("localVarPostBody: %v\n", localVarPostBody)
+	fmt.Printf("localVarQueryParams: %v\n", localVarQueryParams)
+	fmt.Printf("localVarFormParams: %v\n", localVarFormParams)
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
