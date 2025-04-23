@@ -281,15 +281,33 @@ func (a *ChargeAPIService) ChargeCreateExecute(r ApiChargeCreateRequest) (*Respo
 	if r.amount == nil {
 		return localVarReturnValue, nil, reportError("amount is required and must be specified")
 	}
-
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/x-www-form-urlencoded", "application/json"}
+    localVarHTTPContentTypes := []string{"application/x-www-form-urlencoded", "application/json"}
+    var localVarHTTPContentType string
 
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
+    // Force Content-Type to application/x-www-form-urlencoded if form parameters are present
+    if len(localVarFormParams) > 0 {
+       localVarHTTPContentType = "application/x-www-form-urlencoded"
+    } else {
+    // Use the default logic to select the Content-Type
+       localVarHTTPContentType = selectHeaderContentType(localVarHTTPContentTypes)
+    }
+
+    // set Content-Type header
+    if localVarHTTPContentType != "" {
+       localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+    }
+	
+
+	// // to determine the Content-Type header
+	// localVarHTTPContentTypes := []string{"application/x-www-form-urlencoded", "application/json"}
+
+	// // set Content-Type header
+	// localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+
+	// if localVarHTTPContentType != "" {
+	// 	localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	// }
 
 	// to determine the Accept header
 	localVarHTTPHeaderAccepts := []string{"application/json"}
