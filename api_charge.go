@@ -263,8 +263,7 @@ func (a *ChargeAPIService) ChargeCreateExecute(r ApiChargeCreateRequest) (*Respo
 		formFiles            []formFile
 		localVarReturnValue  *Response
 	)
-	fmt.Printf("r: %v\n", r)
-	fmt.Printf("r.email: %v\n", r.email)
+	fmt.Printf("!!!!!!r.email: %v\n", &r.email)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ChargeAPIService.ChargeCreate")
 	if err != nil {
@@ -352,12 +351,8 @@ func (a *ChargeAPIService) ChargeCreateExecute(r ApiChargeCreateRequest) (*Respo
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
-	fmt.Printf("!!!!req: %v\n", req)
-	fmt.Printf("!!!!!!err: %v\n", err)
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
-	fmt.Printf("localVarHTTPResponse: %v\n", localVarHTTPResponse)
-	fmt.Printf("3err: %v\n", err)
 	if err != nil || localVarHTTPResponse == nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
