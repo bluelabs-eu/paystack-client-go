@@ -286,7 +286,9 @@ func (a *ChargeAPIService) ChargeCreateExecute(r ApiChargeCreateRequest) (*Respo
     var localVarHTTPContentType string
 
     // Force Content-Type to application/x-www-form-urlencoded if form parameters are present
+	fmt.Printf("localVarFormParams: %v\n", localVarFormParams)
     if len(localVarFormParams) > 0 {
+		fmt.Println("!!!!!!!!!!!Setting Content-Type to application/x-www-form-urlencoded")
        localVarHTTPContentType = "application/x-www-form-urlencoded"
     } else {
     // Use the default logic to select the Content-Type
