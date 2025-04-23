@@ -19,6 +19,7 @@ import (
 	"net/url"
 	"strings"
 	"time"
+	"fmt"
 )
 
 
@@ -101,12 +102,17 @@ func (a *ChargeAPIService) ChargeCheckExecute(r ApiChargeCheckRequest) (*Respons
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
+	// Debug: Print the response body
+    fmt.Printf("Response Body: %s\n", string(localVarBody))
+
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
+
+		fmt.Printf("Error Response: %s\n", string(localVarBody))
 		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
@@ -137,6 +143,7 @@ func (a *ChargeAPIService) ChargeCheckExecute(r ApiChargeCheckRequest) (*Respons
 	}
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	fmt.Printf("Decode Error: %s\n", err.Error())
 	if err != nil {
 		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
