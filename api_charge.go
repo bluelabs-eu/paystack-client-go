@@ -62,6 +62,8 @@ func (a *ChargeAPIService) ChargeCheckExecute(r ApiChargeCheckRequest) (*Respons
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ChargeAPIService.ChargeCheck")
+	fmt.Printf("!!!!localBasePath: %v\n", localBasePath)
+	fmt.Printf("err: %v\n", err)
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
