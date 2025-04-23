@@ -360,6 +360,8 @@ func (a *ChargeAPIService) ChargeCreateExecute(r ApiChargeCreateRequest) (*Respo
 		}
 		req.Body = io.NopCloser(bytes.NewBuffer(bodyBytes)) // Reset the body after reading
 		fmt.Printf("!!!!Request Body: %s\n", string(bodyBytes))
+	} else {
+		fmt.Println("!!!!Request Body: nil")
 	}
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
