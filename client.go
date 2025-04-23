@@ -351,6 +351,9 @@ func (c *APIClient) prepareRequest(
 
 	var body *bytes.Buffer
 
+	fmt.Printf("!!!!Form Params: %v\n", formParams)
+	fmt.Printf("!!!!Content-Type: %s\n", headerParams["Content-Type"])
+
 	// Detect postBody type and post.
 	if postBody != nil {
 		contentType := headerParams["Content-Type"]
