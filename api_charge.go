@@ -409,7 +409,6 @@ func (a *ChargeAPIService) ChargeCreateExecute(r ApiChargeCreateRequest) (*Respo
 	}
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	fmt.Printf("Decode Error: %s\n", err.Error())
 	if err != nil {
 		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
