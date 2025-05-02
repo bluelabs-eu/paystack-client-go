@@ -497,7 +497,15 @@ func (a *TransferRecipientAPIService) TransferrecipientCreateExecute(r ApiTransf
 		formFiles            []formFile
 		localVarReturnValue  *Response
 	)
-	fmt.Printf("Transfer Recipient: %v\n", r)
+	fmt.Printf("r properties:\n")
+	fmt.Printf("Type: %v\n", r.type_)
+	fmt.Printf("Name: %v\n", r.name)
+	fmt.Printf("Account Number: %v\n", r.accountNumber)
+	fmt.Printf("Bank Code: %v\n", r.bankCode)
+	fmt.Printf("Description: %v\n", r.description)
+	fmt.Printf("Currency: %v\n", r.currency)
+	fmt.Printf("Authorization Code: %v\n", r.authorizationCode)
+	fmt.Printf("Metadata: %v\n", r.metadata)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TransferRecipientAPIService.TransferrecipientCreate")
 	if err != nil {
@@ -561,6 +569,17 @@ func (a *TransferRecipientAPIService) TransferrecipientCreateExecute(r ApiTransf
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err == nil && localVarHTTPResponse != nil {
+		fmt.Printf("!!!!!!err: %v\n", err)
+		bodyBytes, readErr := io.ReadAll(localVarHTTPResponse.Body)
+		if readErr == nil {
+			fmt.Printf("!!!!!Response Body recipient: %s\n", string(bodyBytes))
+			localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(bodyBytes)) // Reassign body for further use
+		} else {
+			fmt.Printf("!!Error reading response body: %v\n", readErr)
+		}
+	}
+
 	if err != nil || localVarHTTPResponse == nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
