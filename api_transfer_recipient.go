@@ -502,10 +502,7 @@ func (a *TransferRecipientAPIService) TransferrecipientCreateExecute(r ApiTransf
 	fmt.Printf("Name: %v\n", *r.name)
 	fmt.Printf("Account Number: %v\n", *r.accountNumber)
 	fmt.Printf("Bank Code: %v\n", *r.bankCode)
-	fmt.Printf("Description: %v\n", *r.description)
 	fmt.Printf("Currency: %v\n", *r.currency)
-	fmt.Printf("Authorization Code: %v\n", *r.authorizationCode)
-	fmt.Printf("Metadata: %v\n", *r.metadata)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TransferRecipientAPIService.TransferrecipientCreate")
 	if err != nil {
