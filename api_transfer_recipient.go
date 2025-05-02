@@ -14,13 +14,13 @@ package openapi
 import (
 	"bytes"
 	"context"
+	"fmt"
 	"io"
 	"net/http"
 	"net/url"
 	"strings"
 	"time"
 )
-
 
 // TransferRecipientAPIService TransferRecipientAPI service
 type TransferRecipientAPIService service
@@ -497,6 +497,7 @@ func (a *TransferRecipientAPIService) TransferrecipientCreateExecute(r ApiTransf
 		formFiles            []formFile
 		localVarReturnValue  *Response
 	)
+	fmt.Printf("Transfer Recipient: %v\n", r)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TransferRecipientAPIService.TransferrecipientCreate")
 	if err != nil {
@@ -598,6 +599,7 @@ func (a *TransferRecipientAPIService) TransferrecipientCreateExecute(r ApiTransf
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
+	fmt.Printf("!!!!!!!!localVarReturnValue: %v\n", localVarReturnValue)
 
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
