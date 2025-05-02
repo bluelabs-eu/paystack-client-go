@@ -1003,17 +1003,18 @@ func (a *TransferAPIService) TransferInitiateExecute(r ApiTransferInitiateReques
 		return localVarReturnValue, nil, reportError("recipient is required and must be specified")
 	}
 
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/x-www-form-urlencoded", "application/json"}
+	// // to determine the Content-Type header
+	// localVarHTTPContentTypes := []string{"application/x-www-form-urlencoded", "application/json"}
 
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
+	// // set Content-Type header
+	// localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	// if localVarHTTPContentType != "" {
+	// 	localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	// }
 
 	// to determine the Accept header
 	localVarHTTPHeaderAccepts := []string{"application/json"}
+	localVarHeaderParams["Content-Type"] = "application/x-www-form-urlencoded"
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
