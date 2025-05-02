@@ -498,14 +498,14 @@ func (a *TransferRecipientAPIService) TransferrecipientCreateExecute(r ApiTransf
 		localVarReturnValue  *Response
 	)
 	fmt.Printf("r properties:\n")
-	fmt.Printf("Type: %v\n", &r.type_)
-	fmt.Printf("Name: %v\n", &r.name)
-	fmt.Printf("Account Number: %v\n", &r.accountNumber)
-	fmt.Printf("Bank Code: %v\n", &r.bankCode)
-	fmt.Printf("Description: %v\n", &r.description)
-	fmt.Printf("Currency: %v\n", &r.currency)
-	fmt.Printf("Authorization Code: %v\n", &r.authorizationCode)
-	fmt.Printf("Metadata: %v\n", &r.metadata)
+	fmt.Printf("Type: %v\n", *r.type_)
+	fmt.Printf("Name: %v\n", *r.name)
+	fmt.Printf("Account Number: %v\n", *r.accountNumber)
+	fmt.Printf("Bank Code: %v\n", *r.bankCode)
+	fmt.Printf("Description: %v\n", *r.description)
+	fmt.Printf("Currency: %v\n", *r.currency)
+	fmt.Printf("Authorization Code: %v\n", *r.authorizationCode)
+	fmt.Printf("Metadata: %v\n", *r.metadata)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TransferRecipientAPIService.TransferrecipientCreate")
 	if err != nil {
@@ -539,23 +539,12 @@ func (a *TransferRecipientAPIService) TransferrecipientCreateExecute(r ApiTransf
 		// localVarHeaderParams["Content-Type"] = localVarHTTPContentType
 	// }
 
-	// to determine the Content-Type header
-    localVarHTTPContentTypes := []string{"application/x-www-form-urlencoded", "application/json"}
-    var localVarHTTPContentType string
-
-    // Force Content-Type to application/x-www-form-urlencoded if form parameters are present
-    if len(localVarFormParams) > 0 {
-       localVarHTTPContentType = "application/x-www-form-urlencoded"
-    } else {
-    // Use the default logic to select the Content-Type
-       localVarHTTPContentType = selectHeaderContentType(localVarHTTPContentTypes)
-    }
 
     // set Content-Type header
-    if localVarHTTPContentType != "" {
-       localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-    }
-	fmt.Printf("localVarHTTPContentType: %v\n", localVarHTTPContentType)
+
+	localVarHeaderParams["Content-Type"] = "application/x-www-form-urlencoded"
+
+	fmt.Printf("localVarHTTPContentType: %v\n", localVarHeaderParams["Content-Type"])
 
 	// to determine the Accept header
 	localVarHTTPHeaderAccepts := []string{"application/json"}
