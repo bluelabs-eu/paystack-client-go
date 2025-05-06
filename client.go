@@ -304,6 +304,8 @@ func parameterToJson(obj interface{}) (string, error) {
 
 // callAPI do the request.
 func (c *APIClient) callAPI(request *http.Request) (*http.Response, error) {
+	a := request.Header.Get("Content-Type")
+	fmt.Println("!!!!FINAL Content-Type: ", a)
 	if c.cfg.Debug {
 		dump, err := httputil.DumpRequestOut(request, true)
 		if err != nil {
