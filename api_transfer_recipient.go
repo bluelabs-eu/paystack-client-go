@@ -527,14 +527,14 @@ func (a *TransferRecipientAPIService) TransferrecipientCreateExecute(r ApiTransf
 		return localVarReturnValue, nil, reportError("bankCode is required and must be specified")
 	}
 
-	// // to determine the Content-Type header
-	// localVarHTTPContentTypes := []string{"application/x-www-form-urlencoded", "application/json"}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/x-www-form-urlencoded"}
 
-	// // set Content-Type header
-	// localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	// if localVarHTTPContentType != "" {
-	// 	localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	// }
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
 
 
     // set Content-Type header
