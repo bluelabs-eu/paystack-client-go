@@ -528,18 +528,16 @@ func (a *TransferRecipientAPIService) TransferrecipientCreateExecute(r ApiTransf
 	}
 
 	// to determine the Content-Type header
-	// localVarHTTPContentTypes := []string{"application/x-www-form-urlencoded", "application/json"}
+	localVarHTTPContentTypes := []string{"application/x-www-form-urlencoded", "application/json"}
 
 	// set Content-Type header
-	// localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	// if localVarHTTPContentType != "" {
-		// localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	// }
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
 
 
     // set Content-Type header
-
-	localVarHeaderParams["Content-Type"] = "application/x-www-form-urlencoded"
 
 	fmt.Printf("localVarHTTPContentType: %v\n", localVarHeaderParams["Content-Type"])
 
