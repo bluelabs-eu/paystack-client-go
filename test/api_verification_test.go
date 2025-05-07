@@ -11,10 +11,11 @@ package openapi
 
 import (
 	"context"
+	"testing"
+
+	openapiclient "github.com/bluelabs-eu/paystack-client-go"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
-	"testing"
-	openapiclient "github.com/bluelabs-eu/paystack-client-go-test"
 )
 
 func Test_openapi_VerificationAPIService(t *testing.T) {
@@ -24,7 +25,7 @@ func Test_openapi_VerificationAPIService(t *testing.T) {
 
 	t.Run("Test VerificationAPIService VerificationAvs", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.VerificationAPI.VerificationAvs(context.Background()).Execute()
 
@@ -36,7 +37,7 @@ func Test_openapi_VerificationAPIService(t *testing.T) {
 
 	t.Run("Test VerificationAPIService VerificationFetchBanks", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.VerificationAPI.VerificationFetchBanks(context.Background()).Execute()
 
@@ -48,7 +49,7 @@ func Test_openapi_VerificationAPIService(t *testing.T) {
 
 	t.Run("Test VerificationAPIService VerificationListCountries", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.VerificationAPI.VerificationListCountries(context.Background()).Execute()
 
@@ -60,7 +61,7 @@ func Test_openapi_VerificationAPIService(t *testing.T) {
 
 	t.Run("Test VerificationAPIService VerificationResolveAccountNumber", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.VerificationAPI.VerificationResolveAccountNumber(context.Background()).Execute()
 
@@ -72,7 +73,7 @@ func Test_openapi_VerificationAPIService(t *testing.T) {
 
 	t.Run("Test VerificationAPIService VerificationResolveCardBin", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var bin string
 
