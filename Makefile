@@ -1,4 +1,6 @@
 # Variables
+GENERATOR := openapi-generator 
+OUTPUT_DIR := .
 OPENAPI_FILE := api/openapi.yaml
 YQ := ./yq  # Use the local yq binary
 
@@ -13,6 +15,14 @@ install-deps:
 		echo "yq is already installed."; \
 	fi
 
+# Install OpenAPI Generator CLI
+install-generator:
+	@if ! command -v $(GENERATOR) &> /dev/null; then \
+		echo "Installing openapi-generator-cli via Homebrew..."; \
+		brew install openapi-generator; \
+	else \
+		echo "openapi-generator-cli is already installed."; \
+	fi
 
 # Show modifiable paths
 show-paths:
@@ -32,3 +42,10 @@ modify: install-deps
 	fi
 	chmod +x ./modify_openapi_schema.sh
 	YQ=$(YQ) ./modify_openapi_schema.sh $(OPENAPI_FILE) $(PATH) $(SCHEMA)
+
+
+# Regenerate code
+regenerate-code: install-generator
+	@echo "Regenerating code from OpenAPI spec..."
+	$(GENERATOR) generate -i $(OPENAPI_FILE) -g go -o $(OUTPUT_DIR)
+	@echo "Code regeneration complete."
