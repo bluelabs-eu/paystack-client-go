@@ -1,5 +1,4 @@
 .gitignore
-.openapi-generator-ignore
 .travis.yml
 README.md
 api/openapi.yaml
@@ -32,7 +31,6 @@ docs/BulkChargeAPI.md
 docs/BulkChargeInitiate.md
 docs/BulkChargeInitiateRequestInner1.md
 docs/ChargeAPI.md
-docs/ChargeCreateRequest.md
 docs/ChargeSubmitAddress.md
 docs/ChargeSubmitBirthday.md
 docs/ChargeSubmitOTP.md
@@ -108,7 +106,6 @@ model_accepted.go
 model_bank.go
 model_bulk_charge_initiate.go
 model_bulk_charge_initiate_request_inner_1.go
-model_charge_create_request.go
 model_charge_submit_address.go
 model_charge_submit_birthday.go
 model_charge_submit_otp.go
@@ -161,24 +158,4 @@ model_transfer_resend_otp.go
 model_ussd.go
 model_verification_bvn_match.go
 response.go
-test/api_balance_test.go
-test/api_bulk_charge_test.go
-test/api_charge_test.go
-test/api_customer_test.go
-test/api_dedicated_virtual_account_test.go
-test/api_dispute_test.go
-test/api_integration_test.go
-test/api_page_test.go
-test/api_payment_request_test.go
-test/api_plan_test.go
-test/api_product_test.go
-test/api_refund_test.go
-test/api_settlement_test.go
-test/api_split_test.go
-test/api_subaccount_test.go
-test/api_subscription_test.go
-test/api_transaction_test.go
-test/api_transfer_recipient_test.go
-test/api_transfer_test.go
-test/api_verification_test.go
 utils.go
