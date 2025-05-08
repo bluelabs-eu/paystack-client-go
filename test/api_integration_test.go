@@ -11,10 +11,11 @@ package openapi
 
 import (
 	"context"
+	"testing"
+
+	openapiclient "github.com/bluelabs-eu/paystack-client-go"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
-	"testing"
-	openapiclient "github.com/bluelabs-eu/paystack-client-go-test"
 )
 
 func Test_openapi_IntegrationAPIService(t *testing.T) {
@@ -24,7 +25,7 @@ func Test_openapi_IntegrationAPIService(t *testing.T) {
 
 	t.Run("Test IntegrationAPIService IntegrationFetchPaymentSessionTimeout", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.IntegrationAPI.IntegrationFetchPaymentSessionTimeout(context.Background()).Execute()
 
@@ -36,7 +37,7 @@ func Test_openapi_IntegrationAPIService(t *testing.T) {
 
 	t.Run("Test IntegrationAPIService IntegrationUpdatePaymentSessionTimeout", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.IntegrationAPI.IntegrationUpdatePaymentSessionTimeout(context.Background()).Execute()
 

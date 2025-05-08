@@ -13,7 +13,7 @@ import (
 	"context"
 	"testing"
 
-	openapiclient "github.com/bluelabs-eu/paystack-client-go-test"
+	openapiclient "github.com/bluelabs-eu/paystack-client-go"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 )

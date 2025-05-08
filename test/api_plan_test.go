@@ -11,10 +11,11 @@ package openapi
 
 import (
 	"context"
+	"testing"
+
+	openapiclient "github.com/bluelabs-eu/paystack-client-go"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
-	"testing"
-	openapiclient "github.com/bluelabs-eu/paystack-client-go-test"
 )
 
 func Test_openapi_PlanAPIService(t *testing.T) {
@@ -24,7 +25,7 @@ func Test_openapi_PlanAPIService(t *testing.T) {
 
 	t.Run("Test PlanAPIService PlanCreate", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.PlanAPI.PlanCreate(context.Background()).Execute()
 
@@ -36,7 +37,7 @@ func Test_openapi_PlanAPIService(t *testing.T) {
 
 	t.Run("Test PlanAPIService PlanFetch", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var code string
 
@@ -50,7 +51,7 @@ func Test_openapi_PlanAPIService(t *testing.T) {
 
 	t.Run("Test PlanAPIService PlanList", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.PlanAPI.PlanList(context.Background()).Execute()
 
@@ -62,7 +63,7 @@ func Test_openapi_PlanAPIService(t *testing.T) {
 
 	t.Run("Test PlanAPIService PlanUpdate", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var code string
 
