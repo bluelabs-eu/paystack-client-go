@@ -1,51 +1,46 @@
 # Variables
-GENERATOR := openapi-generator 
+GENERATOR_IMAGE := openapitools/openapi-generator-cli:v7.13.0
 OUTPUT_DIR := .
 OPENAPI_FILE := api/openapi.yaml
-YQ := ./yq  # Use the local yq binary
+YQ_VERSION := 4.44.3
+YQ_IMAGE := mikefarah/yq:$(YQ_VERSION)
 
-# Install dependencies
-install-deps:
-	@if [ ! -x $(YQ) ]; then \
-		echo "Installing yq..."; \
-		curl -L https://github.com/mikefarah/yq/releases/latest/download/yq_darwin_amd64 -o $(YQ); \
-		chmod +x $(YQ); \
-		echo "yq installed locally as $(YQ)."; \
-	else \
-		echo "yq is already installed."; \
-	fi
+# Docker options
+DOCKER_RUN_OPTS := --rm -v ${PWD}:${PWD} -w ${PWD}
 
-# Install OpenAPI Generator CLI
-install-generator:
-	@if ! command -v $(GENERATOR) &> /dev/null; then \
-		echo "Installing openapi-generator-cli via Homebrew..."; \
-		brew install openapi-generator; \
-	else \
-		echo "openapi-generator-cli is already installed."; \
-	fi
+# Function to run yq via Docker
+define yq
+	docker run $(DOCKER_RUN_OPTS) $(YQ_IMAGE) $(1)
+endef
+
+# Function to run openapi-generator via Docker
+define generator
+	docker run $(DOCKER_RUN_OPTS) $(GENERATOR_IMAGE) $(1)
+endef
 
 # Show modifiable paths
 show-paths:
-	@if [ ! -x $(YQ) ]; then \
-		echo "Error: yq is not installed. Please run 'make install-deps'."; \
-		exit 1; \
-	fi
 	@echo "Available paths in the OpenAPI file:"
-	@$(YQ) eval '.paths | keys' $(OPENAPI_FILE)
+	@$(call yq,eval '.paths | keys' $(OPENAPI_FILE))
 
 # Modify OpenAPI schema
-# Usage: make modify PATH=<path> SCHEMA=<schema_type>
-modify: install-deps
-	@if [ -z "$(PATH)" ] || [ -z "$(SCHEMA)" ]; then \
-		echo "Usage: make modify PATH=<path> SCHEMA=<schema_type>"; \
+# Usage: make modify API_PATH=<path> SCHEMA=<media-type>
+modify:
+	@if [ -z "$(API_PATH)" ] || [ -z "$(SCHEMA)" ]; then \
+		echo "Error: Both API_PATH and SCHEMA are required"; \
 		exit 1; \
 	fi
-	chmod +x ./modify_openapi_schema.sh
-	YQ=$(YQ) ./modify_openapi_schema.sh $(OPENAPI_FILE) $(PATH) $(SCHEMA)
+	@echo "Validating schema '$(SCHEMA)' exists for POST $(API_PATH)..."
+	@$(call yq,eval '.paths["$(API_PATH)"].post.requestBody.content["$(SCHEMA)"]' $(OPENAPI_FILE)) > /dev/null || { \
+		echo "Error: Schema type '$(SCHEMA)' not found in the requestBody."; \
+		exit 1; \
+	}
+	@echo "Keeping only schema '$(SCHEMA)' in POST $(API_PATH)..."
+	@$(call yq,eval -i '.paths["$(API_PATH)"].post.requestBody.content = {"$(SCHEMA)": .paths["$(API_PATH)"].post.requestBody.content["$(SCHEMA)"]}' $(OPENAPI_FILE))
+	@echo "OpenAPI file updated."
 
-
-# Regenerate code
-regenerate-code: install-generator
-	@echo "Regenerating code from OpenAPI spec..."
-	$(GENERATOR) generate -i $(OPENAPI_FILE) -g go -o $(OUTPUT_DIR)
+# Regenerate code via Docker
+regenerate-code:
+	@echo "Regenerating code from OpenAPI spec using Docker..."
+	@$(call generator,generate -i $(OPENAPI_FILE) -g go -o $(OUTPUT_DIR))
 	@echo "Code regeneration complete."
