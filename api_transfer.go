@@ -1004,7 +1004,7 @@ func (a *TransferAPIService) TransferInitiateExecute(r ApiTransferInitiateReques
 	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/x-www-form-urlencoded", "application/json"}
+	localVarHTTPContentTypes := []string{"application/x-www-form-urlencoded"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
