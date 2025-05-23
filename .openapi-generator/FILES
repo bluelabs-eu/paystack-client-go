@@ -84,7 +84,6 @@ docs/SubscriptionToggle.md
 docs/TransactionAPI.md
 docs/TransactionChargeAuthorization.md
 docs/TransactionCheckAuthorization.md
-docs/TransactionInitialize.md
 docs/TransactionPartialDebit.md
 docs/TransferAPI.md
 docs/TransferBulk.md
@@ -145,7 +144,6 @@ model_subscription_create.go
 model_subscription_toggle.go
 model_transaction_charge_authorization.go
 model_transaction_check_authorization.go
-model_transaction_initialize.go
 model_transaction_partial_debit.go
 model_transfer_bulk.go
 model_transfer_finalize.go

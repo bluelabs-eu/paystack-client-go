@@ -245,7 +245,6 @@ Class | Method | HTTP request | Description
  - [SubscriptionToggle](docs/SubscriptionToggle.md)
  - [TransactionChargeAuthorization](docs/TransactionChargeAuthorization.md)
  - [TransactionCheckAuthorization](docs/TransactionCheckAuthorization.md)
- - [TransactionInitialize](docs/TransactionInitialize.md)
  - [TransactionPartialDebit](docs/TransactionPartialDebit.md)
  - [TransferBulk](docs/TransferBulk.md)
  - [TransferFinalize](docs/TransferFinalize.md)
