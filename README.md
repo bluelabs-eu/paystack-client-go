@@ -204,6 +204,7 @@ Class | Method | HTTP request | Description
 
  - [Accepted](docs/Accepted.md)
  - [Bank](docs/Bank.md)
+ - [BankResponse](docs/BankResponse.md)
  - [BulkChargeInitiate](docs/BulkChargeInitiate.md)
  - [BulkChargeInitiateRequestInner1](docs/BulkChargeInitiateRequestInner1.md)
  - [ChargeSubmitAddress](docs/ChargeSubmitAddress.md)
@@ -224,6 +225,7 @@ Class | Method | HTTP request | Description
  - [DisputeUpdate](docs/DisputeUpdate.md)
  - [EFT](docs/EFT.md)
  - [Error](docs/Error.md)
+ - [FullBankDetails](docs/FullBankDetails.md)
  - [MobileMoney](docs/MobileMoney.md)
  - [PageCreate](docs/PageCreate.md)
  - [PageProduct](docs/PageProduct.md)

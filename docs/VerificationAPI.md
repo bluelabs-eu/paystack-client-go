@@ -82,7 +82,7 @@ Name | Type | Description  | Notes
 
 ## VerificationFetchBanks
 
-> Response VerificationFetchBanks(ctx).Country(country).PayWithBankTransfer(payWithBankTransfer).UseCursor(useCursor).PerPage(perPage).Next(next).Previous(previous).Gateway(gateway).Execute()
+> BankResponse VerificationFetchBanks(ctx).Country(country).PayWithBankTransfer(payWithBankTransfer).UseCursor(useCursor).PerPage(perPage).Next(next).Previous(previous).Gateway(gateway).Execute()
 
 Fetch Banks
 
@@ -114,7 +114,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `VerificationAPI.VerificationFetchBanks``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `VerificationFetchBanks`: Response
+	// response from `VerificationFetchBanks`: BankResponse
 	fmt.Fprintf(os.Stdout, "Response from `VerificationAPI.VerificationFetchBanks`: %v\n", resp)
 }
 ```
@@ -140,7 +140,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Response**](Response.md)
+[**BankResponse**](BankResponse.md)
 
 ### Authorization
 
