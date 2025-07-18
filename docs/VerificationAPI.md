@@ -82,7 +82,7 @@ Name | Type | Description  | Notes
 
 ## VerificationFetchBanks
 
-> BankResponse VerificationFetchBanks(ctx).Country(country).PayWithBankTransfer(payWithBankTransfer).UseCursor(useCursor).PerPage(perPage).Next(next).Previous(previous).Gateway(gateway).Execute()
+> BankResponse VerificationFetchBanks(ctx).Country(country).Currency(currency).PayWithBankTransfer(payWithBankTransfer).UseCursor(useCursor).PerPage(perPage).Next(next).Previous(previous).Gateway(gateway).Execute()
 
 Fetch Banks
 
@@ -100,6 +100,7 @@ import (
 
 func main() {
 	country := "country_example" // string |  (optional)
+	currency := "currency_example" // string |  (optional)
 	payWithBankTransfer := true // bool |  (optional)
 	useCursor := true // bool |  (optional)
 	perPage := int32(56) // int32 |  (optional)
@@ -109,7 +110,7 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.VerificationAPI.VerificationFetchBanks(context.Background()).Country(country).PayWithBankTransfer(payWithBankTransfer).UseCursor(useCursor).PerPage(perPage).Next(next).Previous(previous).Gateway(gateway).Execute()
+	resp, r, err := apiClient.VerificationAPI.VerificationFetchBanks(context.Background()).Country(country).Currency(currency).PayWithBankTransfer(payWithBankTransfer).UseCursor(useCursor).PerPage(perPage).Next(next).Previous(previous).Gateway(gateway).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `VerificationAPI.VerificationFetchBanks``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -131,6 +132,7 @@ Other parameters are passed through a pointer to a apiVerificationFetchBanksRequ
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **country** | **string** |  | 
+ **currency** | **string** |  | 
  **payWithBankTransfer** | **bool** |  | 
  **useCursor** | **bool** |  | 
  **perPage** | **int32** |  | 

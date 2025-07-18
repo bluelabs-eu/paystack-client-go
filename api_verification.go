@@ -174,6 +174,7 @@ type ApiVerificationFetchBanksRequest struct {
 	ctx context.Context
 	ApiService *VerificationAPIService
 	country *string
+	currency *string
 	payWithBankTransfer *bool
 	useCursor *bool
 	perPage *int32
@@ -184,6 +185,11 @@ type ApiVerificationFetchBanksRequest struct {
 
 func (r ApiVerificationFetchBanksRequest) Country(country string) ApiVerificationFetchBanksRequest {
 	r.country = &country
+	return r
+}
+
+func (r ApiVerificationFetchBanksRequest) Currency(currency string) ApiVerificationFetchBanksRequest {
+	r.currency = &currency
 	return r
 }
 
@@ -257,6 +263,9 @@ func (a *VerificationAPIService) VerificationFetchBanksExecute(r ApiVerification
 
 	if r.country != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "country", r.country, "form", "")
+	}
+	if r.currency != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "currency", r.currency, "form", "")
 	}
 	if r.payWithBankTransfer != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "pay_with_bank_transfer", r.payWithBankTransfer, "form", "")
