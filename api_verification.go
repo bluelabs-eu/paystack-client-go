@@ -174,6 +174,7 @@ type ApiVerificationFetchBanksRequest struct {
 	ctx context.Context
 	ApiService *VerificationAPIService
 	country *string
+	currency *string
 	payWithBankTransfer *bool
 	useCursor *bool
 	perPage *int32
@@ -184,6 +185,11 @@ type ApiVerificationFetchBanksRequest struct {
 
 func (r ApiVerificationFetchBanksRequest) Country(country string) ApiVerificationFetchBanksRequest {
 	r.country = &country
+	return r
+}
+
+func (r ApiVerificationFetchBanksRequest) Currency(currency string) ApiVerificationFetchBanksRequest {
+	r.currency = &currency
 	return r
 }
 
@@ -217,7 +223,7 @@ func (r ApiVerificationFetchBanksRequest) Gateway(gateway string) ApiVerificatio
 	return r
 }
 
-func (r ApiVerificationFetchBanksRequest) Execute() (*Response, *http.Response, error) {
+func (r ApiVerificationFetchBanksRequest) Execute() (*BankResponse, *http.Response, error) {
 	return r.ApiService.VerificationFetchBanksExecute(r)
 }
 
@@ -235,13 +241,13 @@ func (a *VerificationAPIService) VerificationFetchBanks(ctx context.Context) Api
 }
 
 // Execute executes the request
-//  @return Response
-func (a *VerificationAPIService) VerificationFetchBanksExecute(r ApiVerificationFetchBanksRequest) (*Response, *http.Response, error) {
+//  @return BankResponse
+func (a *VerificationAPIService) VerificationFetchBanksExecute(r ApiVerificationFetchBanksRequest) (*BankResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Response
+		localVarReturnValue  *BankResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "VerificationAPIService.VerificationFetchBanks")
@@ -257,6 +263,9 @@ func (a *VerificationAPIService) VerificationFetchBanksExecute(r ApiVerification
 
 	if r.country != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "country", r.country, "form", "")
+	}
+	if r.currency != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "currency", r.currency, "form", "")
 	}
 	if r.payWithBankTransfer != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "pay_with_bank_transfer", r.payWithBankTransfer, "form", "")

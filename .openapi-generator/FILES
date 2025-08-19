@@ -27,6 +27,7 @@ configuration.go
 docs/Accepted.md
 docs/BalanceAPI.md
 docs/Bank.md
+docs/BankResponse.md
 docs/BulkChargeAPI.md
 docs/BulkChargeInitiate.md
 docs/BulkChargeInitiateRequestInner1.md
@@ -52,6 +53,7 @@ docs/DisputeResolve.md
 docs/DisputeUpdate.md
 docs/EFT.md
 docs/Error.md
+docs/FullBankDetails.md
 docs/IntegrationAPI.md
 docs/MobileMoney.md
 docs/PageAPI.md
@@ -103,6 +105,7 @@ go.mod
 go.sum
 model_accepted.go
 model_bank.go
+model_bank_response.go
 model_bulk_charge_initiate.go
 model_bulk_charge_initiate_request_inner_1.go
 model_charge_submit_address.go
@@ -123,6 +126,7 @@ model_dispute_resolve.go
 model_dispute_update.go
 model_eft.go
 model_error.go
+model_full_bank_details.go
 model_mobile_money.go
 model_page_create.go
 model_page_product.go
